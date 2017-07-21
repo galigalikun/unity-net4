@@ -6,12 +6,18 @@ using UnityEngine;
 public class NewBehaviourScript : MonoBehaviour
 {
 
+
     // Use this for initialization
     void Start()
     {
         Debug.Log("Start 1");
-        var s = aaa();
-        Debug.Log($"Start 2 {s}");
+        System.Func<Task> func = async () =>
+        {
+            var s = await aaa();
+            Debug.Log($"func 1 {s}");
+        };
+
+        func();
     }
 
     // Update is called once per frame
