@@ -9,7 +9,9 @@ public class NewBehaviourScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        aaa();
+        Debug.Log("Start 1");
+        var s = aaa();
+        Debug.Log($"Start 2 {s}");
     }
 
     // Update is called once per frame
@@ -18,8 +20,17 @@ public class NewBehaviourScript : MonoBehaviour
 
     }
 
-    void aaa()
+    async Task<string> aaa()
     {
-        Task.Delay(100);
+        Debug.Log("aaa start");
+        for (var i = 0; i < 10; i++)
+        {
+            await Task.Delay(1500);
+            Debug.Log($"aaa {i}");
+        }
+
+        Debug.Log("aaa end");
+
+        return "end";
     }
 }
