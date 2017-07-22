@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using TA = System.Threading.Tasks;
 using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
@@ -11,7 +11,7 @@ public class NewBehaviourScript : MonoBehaviour
     void Start()
     {
         Debug.Log("Start 1");
-        System.Func<Task> func = async () =>
+        System.Func<TA.Task> func = async () =>
         {
             var s = await aaa();
             Debug.Log($"func 1 {s}");
@@ -19,7 +19,7 @@ public class NewBehaviourScript : MonoBehaviour
 
         func();
 
-        Task.Run(() => Debug.Log(transform.position));
+        TA.Task.Run(() => Debug.Log(transform.position));
     }
 
     // Update is called once per frame
@@ -28,12 +28,12 @@ public class NewBehaviourScript : MonoBehaviour
 
     }
 
-    async Task<string> aaa()
+    async TA.Task<string> aaa()
     {
         Debug.Log("aaa start");
         for (var i = 0; i < 10; i++)
         {
-            await Task.Delay(1500);
+            await TA.Task.Delay(1500);
             Debug.Log($"aaa {i}");
         }
 
