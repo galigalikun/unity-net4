@@ -18,6 +18,8 @@ public class NewBehaviourScript : MonoBehaviour
         };
 
         func();
+
+        Task.Run(() => Debug.Log(transform.position));
     }
 
     // Update is called once per frame
