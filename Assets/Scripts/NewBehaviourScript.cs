@@ -32,12 +32,27 @@ public class NewBehaviourScript : MonoBehaviour
             // }, null);
 
         });
+
+        var t = bbb(() =>
+        {
+            Debug.Log("callback??");
+        });
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    async Task<int> bbb(System.Action callback)
+    {
+        var task = new TaskCompletionSource<int>();
+        callback += () => task.SetResult(200);
+
+        await task.Task;
+
+        return 100;
     }
 
     async Task<string> aaa()
